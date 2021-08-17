@@ -20,19 +20,19 @@ void setup()
 
   //aes_ecb_128_self_test(1);
 
-  uint8_t input[AES_ECB_LENGTH] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8'};
+  uint8_t input[AES_ECB_LENGTH] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8'}; // message raw[16]
   uint8_t output[AES_ECB_LENGTH];
 
-  AesEcb128 aes("1234567890123456");
+  AesEcb128 aes("1234567890123456"); // init with KEY
 
   memset(output, 0, AES_ECB_LENGTH);
   aes.Encrypt(input, output);
-  DUMP("", input, AES_ECB_LENGTH);
-  DUMP("", output, AES_ECB_LENGTH);
+  DUMP("", input, AES_ECB_LENGTH);   // print message
+  DUMP("", output, AES_ECB_LENGTH);  // print encrypted buffre
 
   memset(input, 0, AES_ECB_LENGTH);
-  aes.Decrypt(output, input);
-  DUMP("", input, AES_ECB_LENGTH);
+  aes.Decrypt(output, input);        // output is encrypted message
+  DUMP("", input, AES_ECB_LENGTH);   // print decrypted
 }
 
 void loop()
